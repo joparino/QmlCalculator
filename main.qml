@@ -56,6 +56,9 @@ Window {
             isBracketStart = true
             expressionString += "("
             break
+        case "%":
+            expressionString += "*0.01"
+            break
         case "+-":
             expressionString += "*(-1)"
             break

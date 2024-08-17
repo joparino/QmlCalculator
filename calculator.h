@@ -13,7 +13,12 @@ public:
 public slots:
     QString evalute(QString expression)
     {
-        return m_jsEngine.evaluate(expression).toString();
+        QJSValue result = m_jsEngine.evaluate(expression);
+        if (result.isError())
+        {
+            return "Ошибка";
+        }
+        return result.toString();
     }
 
 private:
