@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>OperationButton.qml</file>
+        <file>../assets/bkt.svg</file>
+        <file>../assets/division.svg</file>
+        <file>../assets/equal.svg</file>
+        <file>../assets/minus.svg</file>
+        <file>../assets/multiplication.svg</file>
+        <file>../assets/percent.svg</file>
+        <file>../assets/plus.svg</file>
+        <file>../assets/plus_minus.svg</file>
+        <file>DigitButton.qml</file>
+        <file>EqualButton.qml</file>
+    </qresource>
+</RCC>
