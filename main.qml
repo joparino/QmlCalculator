@@ -3,13 +3,33 @@ import QtQuick.Window 2.15
 import QtQuick.Controls 2.15
 import QtQuick.Layouts 1.15
 
+
+
 Window {
+    QtObject{
+        id: colors
+        readonly property string white: "#FFFFFF"
+
+        readonly property string defaultColor: "#024873"
+        readonly property string resultAreaColor: "#04BFAD"
+
+        readonly property string defaultOperationColor: "#0889A6"
+        readonly property string accentOperationColor: "#F7E425"
+
+        readonly property string defaultDigitColor: "#B0D1D8"
+        readonly property string accentDigitColor: colors.resultAreaColor
+
+        readonly property string defaultClearColor: "#f9afaf"
+        readonly property string accentClearColor: "#F25E5E"
+    }
+
     id: window
     width: 360
     height: 620
     visible: true
     title: qsTr("QmlCalculator")
-    color: "#024873"
+    color: colors.defaultColor
+
     property string expressionString
     property string historyString
     property bool isSolved
@@ -85,7 +105,7 @@ Window {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        color: "#04BFAD"
+        color: colors.defaultColor
         visible: false
 
         Text {
@@ -93,8 +113,12 @@ Window {
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
-            font.pixelSize: 50
+            font.pixelSize: 20
+            font.family: "Open Sans"
+            font.weight: Font.DemiBold
+            font.letterSpacing:  0.5
             text: "Секретное меню"
+            color: colors.white
         }
 
         Button {
@@ -102,6 +126,10 @@ Window {
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
+            font.pixelSize: 20
+            font.family: "Open Sans"
+            font.weight: Font.DemiBold
+            font.letterSpacing:  0.5
             text: "Назад"
             onClicked: secretMenu.visible = false
         }
@@ -109,45 +137,51 @@ Window {
 
     Rectangle {
         id: roundedResultArea
+        height: parent.height / 4
         anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
-        height: parent.height / 4
-        color: "#04BFAD"
+        color: colors.resultAreaColor
         radius: 20
         visible: secretMenu.visible ? false : true
 
         Rectangle {
             id: resultArea
             height: parent.height / 4
-            color: "#04BFAD"
             anchors.top: parent.top
             anchors.left: parent.left
             anchors.right: parent.right
             anchors.bottom: parent.bottom
             anchors.bottomMargin: 20
+            color: colors.resultAreaColor
 
             Text {
                 id: historyText
+                height: 30
                 anchors.bottom: resultArea.bottom
                 anchors.right: parent.right
-                anchors.bottomMargin: resultText.font.pixelSize
                 anchors.rightMargin: 24
+                anchors.bottomMargin: resultText.font.pixelSize + 10
+                color: colors.white
                 text: historyString
-                color: "white"
-                font.pixelSize: 50
-                font.family: "Open Sans Semibold"
+                font.pixelSize: 20
+                font.family: "Open Sans"
+                font.weight: Font.DemiBold
+                font.letterSpacing:  0.5
             }
 
             Text {
                 id: resultText
+                height: 60
                 anchors.bottom: parent.bottom
                 anchors.right: parent.right
                 anchors.rightMargin: 24
+                color: colors.white
                 text: expressionString
-                color: "white"
-                font.pixelSize: 60
-                font.family: "Open Sans Semibold"
+                font.pixelSize: 50
+                font.family: "Open Sans"
+                font.weight: Font.DemiBold
+                font.letterSpacing:  0.5
             }
         }
     }
@@ -158,12 +192,12 @@ Window {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        rows: 5
-        columns: 4
         anchors.topMargin: 20
         anchors.leftMargin: 24
         anchors.rightMargin: 24
         anchors.bottomMargin: 20
+        rows: 5
+        columns: 4
         columnSpacing: 24
         rowSpacing: 24
         visible: secretMenu.visible ? false : true

@@ -23,6 +23,6 @@ RoundButton {
 
     background: Rectangle {
         radius: 360
-        color: button.pressed ? "#F7E425" : "#0889A6"
+        color: button.pressed ? colors.accentOperationColor : colors.defaultOperationColor
     }
 }

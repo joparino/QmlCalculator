@@ -13,17 +13,20 @@ RoundButton {
 
     contentItem: Text {
         anchors.fill: parent
-        text: modelData.text
-        font.pixelSize: 24
-        font.family: "Open Sans Semibold"
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
+        height: 30
+        text: modelData.text
+        font.pixelSize: 24
+        font.family: "Open Sans"
+        font.weight: Font.DemiBold
+        font.letterSpacing:  1
         color:
             switch(modelData.type) {
                 case "clear":
-                    return "#FFFFFF"
+                    return colors.white
                 default:
-                    return digitButton.pressed ? "#FFFFFF" : "#024873"
+                    return digitButton.pressed ? colors.white : colors.defaultColor
             }
     }
 
@@ -34,9 +37,9 @@ RoundButton {
         color:
             switch(modelData.type) {
                 case "clear":
-                    return digitButton.pressed ? "#F25E5E" : "#f9afaf"
+                    return digitButton.pressed ? colors.accentClearColor : colors.defaultClearColor
                 default:
-                    return digitButton.pressed ? "#04BFAD" : "#B0D1D8"
+                    return digitButton.pressed ? colors.accentDigitColor : colors.defaultDigitColor
             }
     }
 }

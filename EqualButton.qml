@@ -23,6 +23,6 @@ DelayButton {
 
     background: Rectangle {
         radius: 360
-        color: delayButton.pressed ? "#F7E425" : "#0889A6"
+        color: delayButton.pressed ? colors.accentOperationColor : colors.defaultOperationColor
     }
 }

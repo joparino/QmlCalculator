@@ -1,5 +1,4 @@
-#ifndef CALCULATOR_H
-#define CALCULATOR_H
+#pragma  once
 
 #include <QObject>
 #include <QJSEngine>
@@ -10,7 +9,7 @@ class Calculator: public QObject
 public:
     explicit Calculator(QObject *parent = 0){};
 
-public slots:
+Q_INVOKABLE
     QString evalute(QString expression)
     {
         QJSValue result = m_jsEngine.evaluate(expression);
@@ -24,5 +23,3 @@ public slots:
 private:
     QJSEngine m_jsEngine;
 };
-
-#endif // CALCULATOR_H
